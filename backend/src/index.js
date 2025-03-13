@@ -1,15 +1,16 @@
-import express from "express"; 
-import dotenv from "dotenv";
+import express from "express"; // used for easier api implementation
+import dotenv from "dotenv"; // this module allows us to load environment variables from the .env file
 
-import {connectDB} from "./lib/db.js";
+import {connectDB} from "./lib/db.js"; // in curly brackets for explicit import
 
 import authRoutes from "./routes/auth.route.js";
 
-dotenv.config();
+dotenv.config(); // loads env variables from .env to process.env making them available in that variable
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json()); // makes json requests accessible in req.body
+// clients send data in json format. using the above makes them usable
 
 app.use("/api/auth", authRoutes);
 
