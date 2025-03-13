@@ -35,7 +35,8 @@ export const signup = async (req,res) => {
         if(newUser){
             // generate jwt token
             generateToken(newUser._id,res);
-            await newUser.save();
+            await newUser.save(); // save newUser to database. .save() comes from mongoose
+            // await ensures newUser is saved to database
 
             res.status(201).json({ // continue running function since there's no return on the res
                 _id: newUser._id,
