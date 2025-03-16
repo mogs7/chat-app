@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import {connectDB} from "./lib/db.js"; // in curly brackets for explicit import
 
 import authRoutes from "./routes/auth.route.js";
+import messageRoutes from "./routes/message.route.js";
 
 dotenv.config(); // loads env variables from .env to process.env making them available in that variable
 
@@ -15,6 +16,7 @@ app.use(express.json()); // makes json requests accessible in req.body
 app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/message", messageRoutes);
 
 const PORT = process.env.PORT;
 
